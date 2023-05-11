@@ -8,19 +8,5 @@
   "diagnostic.infoSign": "ℹ",
   "diagnostic.hintSign": "🍄",
   "diagnostic.checkCurrentLine": true,
-  "grammarly.showExamples": true,
-  "grammarly.emotions": ["analytical", "confident", "joyful", "neutral"],
-  "grammarly.filetypes": [
-    "asciidoc",
-    "gitcommit",
-    "gitrebase",
-    "tex",
-    "plaintex",
-    "context",
-    "markdown",
-    "text",
-    "rst"
-  ],
   "suggest.labelMaxLength": 20
 }
-
