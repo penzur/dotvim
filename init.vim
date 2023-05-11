@@ -138,12 +138,12 @@ set colorcolumn=80
 set rnu
 set nu
 set nocursorline
-autocmd ColorScheme * hi EndOfBuffer guibg=none
-autocmd ColorScheme * hi NonText guibg=none guifg=#444444
-autocmd ColorScheme * hi clear SignColumn
-autocmd ColorScheme * hi clear LineNr
-autocmd ColorScheme * hi Keyword gui=italic,bold
-autocmd ColorScheme * hi SpecialKey ctermbg=NONE
+hi EndOfBuffer guibg=none
+hi NonText guibg=none guifg=#aaaaaa
+hi clear SignColumn
+hi clear LineNr
+hi Keyword gui=italic,bold
+hi SpecialKey ctermbg=NONE
 
 " Toggle paste mode
 nmap <silent> <F4> :set invpaste<CR>:set paste?<CR>
