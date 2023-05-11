@@ -264,6 +264,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " coc-go add missing imports on save
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 " tab/space lang settings
+let g:rust_recommended_style = v:false
 autocmd Filetype python,php,rust setlocal ts=4 sts=4 sw=4 expandtab
 autocmd Filetype html,ruby,cucumber,javascript,typescript,json,jade,pug,sh,text,jsx,scala,css,scss setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype go setlocal ts=4 sts=4 sw=4 noexpandtab
