@@ -4,7 +4,7 @@ call plug#begin('~/.config/nvim/bundle')
 " colors
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
-Plug 'chriskempson/base16-vim'
+Plug 'RRethy/nvim-base16'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'projekt0n/github-nvim-theme'
 
