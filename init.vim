@@ -50,7 +50,7 @@ set modelines=4
 " Enable syntax highlighting
 syntax on
 " Highlight current line
-set nocursorline
+set cursorline
 " Show “invisible” characters
 set lcs=tab:\ \ ,trail:·,eol:¬,nbsp:_
 set list
@@ -137,7 +137,6 @@ endif
 set colorcolumn=80
 set rnu
 set nu
-set nocursorline
 hi EndOfBuffer guibg=none
 hi NonText guibg=none guifg=#aaaaaa
 hi clear SignColumn
