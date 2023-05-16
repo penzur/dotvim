@@ -207,15 +207,15 @@ vmap <C-k> [egv
 vmap <C-j> ]egv
 
 " faster scroll
-nnoremap <silent> <A-j> 2gj
-nnoremap <silent> <A-k> 2gk
+nnoremap <silent> <A-j> 2gj^zz
+nnoremap <silent> <A-k> 2gk^zz
 
 
 " HOP, easy motion goodness!
 lua require'hop'.setup()
-nnoremap <A-f> :HopWord<CR>
+nnoremap <A-,> :HopWord<CR>
 nnoremap <A-w> :HopWordAC<CR>
-nnoremap <A-b> :HopWordBC<CR>
+nnoremap <A-q> :HopWordBC<CR>
 
 if has("statusline") && !&cp
 	set laststatus=2  " always show the status bar
