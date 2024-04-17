@@ -1,4 +1,4 @@
-# Keep calm and `h``j``k``l` 🦑🦄🤓
+# Keep calm and `h` `j` `k` `l` 🦑🦄🤓
 
 This is my bespoke neovim setup. It's still a work in progress, but it includes all the minimal viable plugins (MVP).
 
