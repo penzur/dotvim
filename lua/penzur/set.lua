@@ -13,6 +13,9 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
+vim.opt.ignorecase = true
+vim.opt.list = true
+vim.opt.listchars = "tab:   ,trail:.,eol:¬"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
