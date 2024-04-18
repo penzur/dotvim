@@ -15,7 +15,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.ignorecase = true
 vim.opt.list = true
-vim.opt.listchars = "tab:   ,trail:.,eol:¬"
+vim.opt.listchars = "tab:   ,trail:.,eol:¬,nbsp:_"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
