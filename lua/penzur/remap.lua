@@ -1,8 +1,11 @@
 vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
 vim.keymap.set("n", ";", ":")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- bubbles
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<C-j>", ":m +1<CR>")
+vim.keymap.set("n", "<C-k>", ":m -2<CR>")
 
 -- vim.keymap.set("n", "<C-d>", "}^zz")
 -- vim.keymap.set("n", "<C-u>", "{^zz")
@@ -20,11 +23,8 @@ vim.keymap.set("n", "<up>", "2{kzz")
 vim.keymap.set("n", "<down>", "2}jzz")
 vim.keymap.set("n", "<left>", ":tabprevious<CR>")
 vim.keymap.set("n", "<right>", ":tabnext<CR>")
-vim.keymap.set("n", "<C-j>", "2gj^zz")
-vim.keymap.set("n", "<C-k>", "2gk^zz")
 
-vim.keymap.set("n", "<leader>w", "<cmd>HopWordMW<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>so", ":so $MYVIMRC<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>hw", "<cmd>HopWordMW<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader><tab>", "za")
 vim.keymap.set("n", "<leader><s-tab>", "zR")
@@ -50,3 +50,10 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.keymap.set("n", "<C-x>", ":!cargo run<CR>", { buffer = true })
   end,
 })
+
+-- buffers
+vim.keymap.set("n", "<C-h>", ":bp<CR>")
+vim.keymap.set("n", "<C-l>", ":bn<CR>")
+
+-- TS
+vim.keymap.set("n", "<leader>ts", ":TSToggle highlight<CR>")

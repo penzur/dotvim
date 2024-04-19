@@ -4,12 +4,9 @@ return {
         -- or                              , branch = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-
-    { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
-    { 'ellisonleao/gruvbox.nvim', priority = 1000 , config = true, opts = ... },
     { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
-    'mbbill/undotree',
-    'tpope/vim-fugitive',
+    {'mbbill/undotree'},
+    {'tpope/vim-fugitive'},
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -67,7 +64,7 @@ return {
         ft = {"go", 'gomod'},
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    'hrsh7th/cmp-nvim-lsp-signature-help',
+    {'hrsh7th/cmp-nvim-lsp-signature-help'},
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -75,5 +72,10 @@ return {
         -- use opts = {} for passing setup options
         -- this is equalent to setup({}) function
     },
-    'hrsh7th/cmp-nvim-lua',
+
+    -- colors
+    {'hrsh7th/cmp-nvim-lua'},
+    {'/rakr/vim-one'},
+    { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
+    { 'ellisonleao/gruvbox.nvim', priority = 1000 , config = true, opts = ... },
 }
