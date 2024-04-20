@@ -41,7 +41,7 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
     },
-    'mg979/vim-visual-multi',
+    {'mg979/vim-visual-multi'},
     {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended

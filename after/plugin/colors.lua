@@ -1,6 +1,8 @@
 -- vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme jellybeans-nvim")
--- vim.cmd("hi Visual guibg=darkblue")
+vim.cmd("colorscheme gruvbox")
+vim.cmd("set background=light")
 
 -- highlights
-vim.cmd("hi ColorColumn guibg=darkred ctermbg=darkred")
+vim.cmd("hi Visual guibg=yellow")
+vim.cmd("hi SignColumn guibg=none")
+vim.cmd("hi ColorColumn guibg=brown ctermbg=none")

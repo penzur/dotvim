@@ -7,22 +7,19 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-j>", ":m +1<CR>")
 vim.keymap.set("n", "<C-k>", ":m -2<CR>")
 
--- vim.keymap.set("n", "<C-d>", "}^zz")
--- vim.keymap.set("n", "<C-u>", "{^zz")
-vim.keymap.set("n", "<C-u>", "{kzz")
-vim.keymap.set("n", "<C-d>", "}jzz")
-
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- vim.keymap.set("n", "{", "2{kzz")
--- vim.keymap.set("n", "}", "2}jzz")
+vim.keymap.set("n", "{", "{kzz")
+vim.keymap.set("n", "}", "}jzz")
 vim.keymap.set("n", "<up>", "2{kzz")
 vim.keymap.set("n", "<down>", "2}jzz")
-vim.keymap.set("n", "<left>", ":tabprevious<CR>")
-vim.keymap.set("n", "<right>", ":tabnext<CR>")
+vim.keymap.set("n", "<C-u>", "{kzz")
+vim.keymap.set("n", "<C-d>", "}jzz")
+vim.keymap.set("n", "<A-k>", "{kzz")
+vim.keymap.set("n", "<A-j>", "}jzz")
 
 vim.keymap.set("n", "<leader>hw", "<cmd>HopWordMW<CR>", { noremap = true })
 
@@ -51,9 +48,30 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Key mapping for git fugitive
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "fugitive",
+  callback = function()
+      vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { buffer = true })
+  end,
+})
+
+-- Key mapping for netrw
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+      vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
+  end,
+})
+
 -- buffers
 vim.keymap.set("n", "<C-h>", ":bp<CR>")
 vim.keymap.set("n", "<C-l>", ":bn<CR>")
 
+-- tabs
+vim.keymap.set("n", "<A-h>", ":tabprevious<CR>")
+vim.keymap.set("n", "<A-l>", ":tabnext<CR>")
+
 -- TS
 vim.keymap.set("n", "<leader>ts", ":TSToggle highlight<CR>")
+vim.keymap.set("n", "<leader>tm", ":silent !tmux ls | fzf-tmux -h | sed 's/:.*//' | xargs tmux switch -t<CR>")
