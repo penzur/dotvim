@@ -1,6 +1,9 @@
 vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
 vim.keymap.set("n", ";", ":")
 
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+
 -- bubbles
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
@@ -12,14 +15,16 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "{", "{kzz")
-vim.keymap.set("n", "}", "}jzz")
+-- vim.keymap.set("n", "{", "{kzz")
+-- vim.keymap.set("n", "}", "}jzz")
 vim.keymap.set("n", "<up>", "2{kzz")
 vim.keymap.set("n", "<down>", "2}jzz")
-vim.keymap.set("n", "<C-u>", "{kzz")
-vim.keymap.set("n", "<C-d>", "}jzz")
-vim.keymap.set("n", "<A-k>", "{kzz")
-vim.keymap.set("n", "<A-j>", "}jzz")
+vim.keymap.set("n", "<C-u>", "k{<Space>0")
+vim.keymap.set("n", "<C-d>", "j}<BS>0")
+vim.keymap.set("n", "<A-k>", "2-")
+vim.keymap.set("n", "<A-j>", "2<cr>")
+vim.keymap.set("n", "<C-e>", "2<C-e>", { noremap = true })
+vim.keymap.set("n", "<C-y>", "2<C-y>", { noremap = true })
 
 vim.keymap.set("n", "<leader>hw", "<cmd>HopWordMW<CR>", { noremap = true })
 
@@ -53,6 +58,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "fugitive",
   callback = function()
       vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { buffer = true })
+      vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
   end,
 })
 

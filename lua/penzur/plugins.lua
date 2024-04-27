@@ -78,4 +78,6 @@ return {
     {'/rakr/vim-one'},
     { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
     { 'ellisonleao/gruvbox.nvim', priority = 1000 , config = true, opts = ... },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "vim-scripts/habiLight" },
 }
