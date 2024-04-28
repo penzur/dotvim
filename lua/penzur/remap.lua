@@ -58,7 +58,15 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "fugitive",
   callback = function()
       vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { buffer = true })
-      vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
+      vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
+  end,
+})
+
+-- Key mapping for help
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  callback = function()
+      vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
   end,
 })
 
@@ -66,7 +74,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "netrw",
   callback = function()
-      vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
+      vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
   end,
 })
 
