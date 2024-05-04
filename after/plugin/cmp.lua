@@ -33,19 +33,19 @@ cmp.setup({
     },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({select = true}),
-        ["<Tab>"] = cmp_action.luasnip_supertab(),
-        ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+        ["<C-j>"] = cmp_action.luasnip_supertab(),
+        ["<C-k>"] = cmp_action.luasnip_shift_supertab(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-        ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
-        ['<C-k>'] = cmp.mapping(function()
+        ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+        ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+        ['<S-Tab>'] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item({behavior = 'insert'})
             else
                 cmp.complete()
             end
         end),
-        ['<C-j>'] = cmp.mapping(function()
+        ['<Tab>'] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_next_item({behavior = 'insert'})
             else

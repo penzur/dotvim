@@ -1,13 +1,20 @@
 local lsp = require('lsp-zero').preset({ manage_nvim_cmp = false })
 
-lsp.ensure_installed({
-	'tsserver',
-	'eslint',
-	'gopls',
-	'pylsp',
-	'lua_ls',
-	'rust_analyzer',
-    'sqlls',
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        'tsserver',
+        'eslint',
+        'gopls',
+        'pylsp',
+        'lua_ls',
+        'rust_analyzer',
+        'sqlls',
+        'emmet_language_server',
+        'cssls',
+        'stylelint_lsp',
+        'tailwindcss',
+    }
 })
 
 lsp.on_attach(function(client, bufnr)
