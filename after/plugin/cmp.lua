@@ -38,18 +38,20 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<C-p>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
         ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'select'}),
-        ['<S-Tab>'] = cmp.mapping(function()
+        ['<S-Tab>'] = cmp.mapping(function(fb)
             if cmp.visible() then
                 cmp.select_prev_item({behavior = 'insert'})
+            elseif require('luasnip').expand_or_jumpable() then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true), '')
             else
-                cmp.complete()
+                fb()
             end
         end),
-        ['<Tab>'] = cmp.mapping(function()
+        ['<Tab>'] = cmp.mapping(function(fb)
             if cmp.visible() then
                 cmp.select_next_item({behavior = 'insert'})
             else
-                cmp.complete()
+                fb()
             end
         end),
     },
