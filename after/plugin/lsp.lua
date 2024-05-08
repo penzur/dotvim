@@ -22,8 +22,21 @@ require("mason-lspconfig").setup({
 lsp_defaults.capabilities = vim.tbl_deep_extend('force', lsp_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
 lsp_defaults.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local lsp_format_on_save = function(bufnr)
+  vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    group = augroup,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+  })
+end
+
 lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({buffer = bufnr})
+  lsp_format_on_save(bufnr)
 end)
 
 local on_attach = function (_, buffnr)
