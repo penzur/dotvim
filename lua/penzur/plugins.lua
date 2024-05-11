@@ -1,29 +1,34 @@
 return {
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.4',
         -- or                              , branch = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
-    {'mbbill/undotree'},
-    {'tpope/vim-fugitive'},
+    { 'mbbill/undotree' },
+    { 'tpope/vim-fugitive' },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'neovim/nvim-lspconfig' },           -- Required
+            { 'williamboman/mason.nvim' },         -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
+            { 'hrsh7th/nvim-cmp' },   -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },   -- Required
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
         }
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
     },
     {
         'numToStr/Comment.nvim',
@@ -32,7 +37,7 @@ return {
         },
         lazy = false,
     },
-    {'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } },
+    { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } },
     {
         'github/copilot.vim',
         cmd = 'Copilot',
@@ -41,18 +46,18 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
     },
-    {'mg979/vim-visual-multi'},
+    { 'mg979/vim-visual-multi' },
     {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
-            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     },
     {
         "ray-x/go.nvim",
-        dependencies = {  -- optional packages
+        dependencies = { -- optional packages
             "ray-x/guihua.lua",
         },
         config = function()
@@ -60,11 +65,11 @@ return {
                 goimports = 'goimports',
             })
         end,
-        event = {"CmdlineEnter"},
-        ft = {"go", 'gomod'},
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    {'hrsh7th/cmp-nvim-lsp-signature-help'},
+    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -74,10 +79,10 @@ return {
     },
 
     -- colors
-    {'hrsh7th/cmp-nvim-lua'},
-    {'/rakr/vim-one'},
-    { 'metalelf0/jellybeans-nvim', dependencies = { 'rktjmp/lush.nvim' } },
-    { 'ellisonleao/gruvbox.nvim', priority = 1000 , config = true, opts = ... },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { 'hrsh7th/cmp-nvim-lua' },
+    { '/rakr/vim-one' },
+    { 'metalelf0/jellybeans-nvim',          dependencies = { 'rktjmp/lush.nvim' } },
+    { 'ellisonleao/gruvbox.nvim',           priority = 1000,                      config = true,  opts = ... },
+    { "catppuccin/nvim",                    name = "catppuccin",                  priority = 1000 },
     { "vim-scripts/habiLight" },
 }
