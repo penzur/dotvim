@@ -26,7 +26,7 @@ vim.keymap.set("n", "<A-j>", "2<cr>")
 vim.keymap.set("n", "<C-e>", "2<C-e>", { noremap = true })
 vim.keymap.set("n", "<C-y>", "2<C-y>", { noremap = true })
 
-vim.keymap.set("n", "<leader>hw", "<cmd>HopWordMW<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>w", "<cmd>HopWordMW<CR>", { noremap = true })
 
 vim.keymap.set("n", "<leader><tab>", "za")
 vim.keymap.set("n", "<leader><s-tab>", "zR")
@@ -89,3 +89,6 @@ vim.keymap.set("n", "<A-l>", ":tabnext<CR>")
 -- TS
 vim.keymap.set("n", "<leader>ts", ":TSToggle highlight<CR>")
 vim.keymap.set("n", "<leader>tm", ":silent !tmux ls | fzf-tmux -h | sed 's/:.*//' | xargs tmux switch -t<CR>")
+
+-- close buffer
+vim.keymap.set("n", "<C-c>", ":bd<CR>")
