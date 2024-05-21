@@ -5,7 +5,14 @@ vim.keymap.set('n', '<c-p>', builtin.find_files, {})
 vim.keymap.set('n', '<c-g>', builtin.live_grep, {})
 vim.keymap.set('n', '<c-b>', builtin.buffers, {})
 vim.keymap.set('n', '<c-f>', function ()
-    builtin.lsp_document_symbols()
+    builtin.lsp_document_symbols({
+        symbols = {'function', 'method'}
+    })
+end)
+vim.keymap.set('n', '<c-t>', function ()
+    builtin.lsp_document_symbols({
+        ignore_symbols = {'function', 'method'}
+    })
 end)
 
 require('telescope').setup({
