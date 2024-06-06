@@ -88,7 +88,7 @@ vim.keymap.set("n", "<A-l>", ":tabnext<CR>")
 
 -- TS
 vim.keymap.set("n", "<leader>ts", ":TSToggle highlight<CR>")
-vim.keymap.set("n", "<leader>tm", ":silent !tmux ls | fzf-tmux -h | sed 's/:.*//' | xargs tmux switch -t<CR>")
+vim.keymap.set("n", "<c-t>", ":silent !tmux ls | fzf-tmux -h | sed 's/:.*//' | xargs tmux switch -t<CR>")
 
 -- close buffer
 vim.keymap.set("n", "<C-c>", ":bd<CR>")

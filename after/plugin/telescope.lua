@@ -9,7 +9,7 @@ vim.keymap.set('n', '<c-f>', function ()
         symbols = {'function', 'method'}
     })
 end)
-vim.keymap.set('n', '<c-t>', function ()
+vim.keymap.set('n', '<s-t>', function ()
     builtin.lsp_document_symbols({
         ignore_symbols = {'function', 'method'}
     })

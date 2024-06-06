@@ -25,6 +25,6 @@ vim.opt.shortmess:append("I")
 -- vim.opt.cursorline = true
 -- g
 vim.g.mapleader = " "
-vim.g.netrw_liststyle = 3
+-- vim.g.netrw_liststyle = 3
 -- mouse
 vim.opt.mouse = "a"
