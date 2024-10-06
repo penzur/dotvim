@@ -21,8 +21,8 @@ vim.keymap.set("n", "<up>", "2{kzz")
 vim.keymap.set("n", "<down>", "2}jzz")
 vim.keymap.set("n", "<C-u>", "k{<Space>0zz")
 vim.keymap.set("n", "<C-d>", "j}<BS>0zz")
-vim.keymap.set("n", "<A-k>", "2-")
-vim.keymap.set("n", "<A-j>", "2<cr>")
+vim.keymap.set("n", "<A-k>", "2-zz")
+vim.keymap.set("n", "<A-j>", "2<cr>zz")
 vim.keymap.set("n", "<C-e>", "2<C-e>", { noremap = true })
 vim.keymap.set("n", "<C-y>", "2<C-y>", { noremap = true })
 
@@ -39,43 +39,51 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- Key mapping for Go
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "go",
-  callback = function()
-      vim.keymap.set("n", "<C-x>", ":!go run %<CR>", { buffer = true })
-  end,
+    pattern = "go",
+    callback = function()
+        vim.keymap.set("n", "<C-x>", ":!go run %<CR>", { buffer = true })
+    end,
 })
 
 -- Key mapping for Rust
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "rust",
-  callback = function()
-      vim.keymap.set("n", "<C-x>", ":!cargo run<CR>", { buffer = true })
-  end,
+    pattern = "rust",
+    callback = function()
+        vim.keymap.set("n", "<C-x>", ":!cargo run<CR>", { buffer = true })
+    end,
 })
 
 -- Key mapping for git fugitive
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "fugitive",
-  callback = function()
-      vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { buffer = true })
-      vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
-  end,
+    pattern = "fugitive",
+    callback = function()
+        vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { buffer = true })
+        vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
+    end,
+})
+
+-- Key mapping for git qf
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    callback = function()
+        vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
+    end,
 })
 
 -- Key mapping for help
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "help",
-  callback = function()
-      vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
-  end,
+    pattern = "help",
+    callback = function()
+        vim.keymap.set("n", "<escape>", ":bd<CR>", { buffer = true })
+    end,
 })
 
 -- Key mapping for netrw
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "netrw",
-  callback = function()
-      vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
-  end,
+    pattern = "netrw",
+    callback = function()
+        vim.keymap.set("n", "<escape><escape>", ":bd<CR>", { buffer = true })
+    end,
 })
 
 -- buffers
@@ -92,3 +100,10 @@ vim.keymap.set("n", "<c-t>", ":silent !tmux ls | fzf-tmux -h | sed 's/:.*//' | x
 
 -- close buffer
 vim.keymap.set("n", "<C-c>", ":bd<CR>")
+
+-- mark
+vim.keymap.set("n", "<leader>m", "`")
+
+-- utils
+vim.keymap.set("v", "'", "c''<escape>P<cr>`]")
+vim.keymap.set("v", "\"", "c\"\"<escape>P<cr>`]")

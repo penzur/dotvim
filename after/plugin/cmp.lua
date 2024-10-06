@@ -1,6 +1,6 @@
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+-- local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
     preselect = 'item',

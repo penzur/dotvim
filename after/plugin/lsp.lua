@@ -64,7 +64,12 @@ lsp.set_sign_icons({
 --
 lsp.setup()
 
-lspconfig.lua_ls.setup({})
+lspconfig.lua_ls.setup({
+    on_attach = function(client)
+    -- Opt out of semantic token highlighting.
+    client.server_capabilities.semanticTokensProvider = nil
+    end
+})
 
 -- tsserver
 lspconfig.tsserver.setup({
@@ -116,10 +121,67 @@ lspconfig.solargraph.setup({
 })
 
 -- null-ls
+local present, null_ls = pcall(require, "null-ls")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+if not present then
+    return
+end
+local b = null_ls.builtins
+
+local sources = {
+    -- b.formatting.eslint_d,
+    -- b.diagnostics.eslint_d,
+    -- b.formatting.stylelint,
+    -- b.diagnostics.stylelint,
+    -- b.formatting.clang_format,
+    b.formatting.stylua,
+    b.formatting.prettier.with {
+        condition = function(utils)
+            return utils.root_has_file { ".prettierrc" }
+        end,
+        prefer_local = "node_modules/.bin",
+    },
+}
 local null = require('null-ls')
-null.setup({
-    on_attach = on_attach,
-    sources = {
-        null.builtins.formatting.prettier
-    }
+null.setup {
+    debug = true,
+    sources = sources,
+    on_attach = function(client, bufnr)
+        if client.supports_method "textDocument/formatting" then
+            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format { bufnr = bufnr }
+                end,
+            })
+        end
+    end,
+}
+lspconfig.emmet_language_server.setup({
+  filetypes = { "css", "eruby", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
+  -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
+  -- **Note:** only the options listed in the table are supported.
+  init_options = {
+    ---@type table<string, string>
+    includeLanguages = {},
+    --- @type string[]
+    excludeLanguages = {},
+    --- @type string[]
+    extensionsPath = {},
+    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
+    preferences = {},
+    --- @type boolean Defaults to `true`
+    showAbbreviationSuggestions = true,
+    --- @type "always" | "never" Defaults to `"always"`
+    showExpandedAbbreviation = "always",
+    --- @type boolean Defaults to `false`
+    showSuggestionsAsSnippets = false,
+    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
+    syntaxProfiles = {},
+    --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
+    variables = {},
+  },
 })

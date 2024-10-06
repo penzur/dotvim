@@ -22,7 +22,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.shortmess:append("I")
--- vim.opt.cursorline = true
+vim.opt.cursorline = true
 -- g
 vim.g.mapleader = " "
 -- vim.g.netrw_liststyle = 3

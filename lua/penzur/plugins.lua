@@ -85,9 +85,10 @@ return {
 
     -- colors
     { 'hrsh7th/cmp-nvim-lua' },
-    { '/rakr/vim-one' },
     { 'metalelf0/jellybeans-nvim',          dependencies = { 'rktjmp/lush.nvim' } },
     { 'ellisonleao/gruvbox.nvim',           priority = 1000,                      config = true,  opts = ... },
     { "catppuccin/nvim",                    name = "catppuccin",                  priority = 1000 },
     { "vim-scripts/habiLight" },
+    { "miikanissi/modus-themes.nvim"},
+    { "EdenEast/nightfox.nvim" },
 }
