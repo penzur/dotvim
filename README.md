@@ -1,20 +1,13 @@
-# Keep calm and `h` `j` `k` `l` 🦑🦄🤓
+# dotvim
 
-This is my bespoke neovim setup. It's still a work in progress, but it includes all the minimal viable plugins (MVP).
+> Trying to keep it as simple as possible this time.
 
-### Get started
+This setup is using [kickstart vim](https://github.com/nvim-lua/kickstart.nvim)
+as based config with my own keymappings and sensible defaults.
 
-1. Make sure you have the following installed.
+**Additional plugins:**
 
-	- Neovim 0.9.5+ with LuaJIT 2.1.17+
-	- Python 3
-	- Go 1.20.x
-	- Rust
-
-2. Back up your `~/.config/nvim` folder, and then run the following command: 
-
-	`$ git clone https://github.com/penzur/dotvim.git $HOME/.config/nvim`
-
-3. Open `neovim` and run `:Lazy install`.
-
-Enjoy!
+- [Harpoon](https://github.com/ThePrimagen/harpoon)
+- [Refactoring](https://github.com/ThePrimeagen/refactoring.nvim)
+- [Vim Visual Multi](https://github.com/mg979/vim-visual-multi)
+- [Incremental Rename](https://github.com/smjonas/inc-rename.nvim)
