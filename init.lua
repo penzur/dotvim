@@ -664,14 +664,15 @@ require("lazy").setup({
 				-- 		})
 				-- 	end,
 				-- },
-				ts_ls = {
+				eslint = {
 					on_attach = function(_, bufnr)
 						vim.api.nvim_create_autocmd("BufWritePre", {
 							buffer = bufnr,
-							command = "silent! !eslint_d --fix " .. vim.fn.expand("%:p"),
+							command = "EslintFixAll",
 						})
 					end,
 				},
+				ts_ls = {},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -798,6 +799,7 @@ require("lazy").setup({
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			-- See `:help cmp`
@@ -874,6 +876,7 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "nvim_lsp_signature_help" },
 				},
 			})
 		end,
@@ -894,8 +897,8 @@ require("lazy").setup({
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
-			vim.cmd.hi("Visual guibg=#131313 guifg=default")
-			vim.cmd.hi("Normal guibg=none")
+			-- vim.cmd.hi("Visual guibg=#131313 guifg=default")
+			-- vim.cmd.hi("Normal guibg=none")
 			vim.cmd.hi("ColorColumn guibg=darkred guifg=darkred")
 			vim.cmd.hi("clear SignColumn")
 			vim.cmd.hi("clear TelescopeBorder")
@@ -933,6 +936,7 @@ require("lazy").setup({
 			require("mini.surround").setup()
 
 			require("mini.tabline").setup()
+			require("mini.git").setup()
 			-- require("mini.completion").setup()
 
 			-- Simple and easy statusline.
@@ -1022,6 +1026,7 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 	require("kickstart.plugins.harpoon"),
 	require("kickstart.plugins.refactoring"),
+	require("kickstart.plugins.neogit"),
 
 	-- kanagawa theme
 	{ "rebelot/kanagawa.nvim" },
