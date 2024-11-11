@@ -3,7 +3,7 @@ return {
 	lazy = false,
 
 	keys = {
-		{ "<M-s>", "<cmd>SessionSearch<CR>", desc = "Session search" },
+		{ "<leader>sp", "<cmd>SessionSearch<CR>", desc = "Session search" },
 	},
 
 	opts = {

@@ -30,8 +30,9 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
+vim.opt.wrap = false
 
--- vim.opt.cursorline = true
+vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.colorcolumn = "80"
 vim.opt.swapfile = false
@@ -39,6 +40,10 @@ vim.opt.swapfile = false
 -- mappings
 vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", "<C-c>", ":bd<CR>")
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-u>", "{")
+vim.keymap.set("n", "<C-d>", "}")
+vim.keymap.set("n", "<leader>n", ":Explore<CR>")
 vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
 vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
 vim.keymap.set("n", "<C-j>", "2<CR>")
@@ -53,6 +58,15 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+-- <escape> should close netrw, neogitstatus buffers
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "netrw", "NeogitStatus" }, -- specify file types
+	callback = function()
+		local opts = { noremap = true, silent = true }
+		local bufnr = vim.api.nvim_get_current_buf()
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<escape>", ":bd!<CR>", opts)
+	end,
+})
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -423,6 +437,11 @@ require("lazy").setup({
 				-- 	end,
 				-- },
 				eslint = {
+					settings = {
+						experimental = {
+							useFlatConfig = true, -- Enable flat config mode
+						},
+					},
 					on_attach = function(_, bufnr)
 						vim.api.nvim_create_autocmd("BufWritePre", {
 							buffer = bufnr,
@@ -666,6 +685,8 @@ require("lazy").setup({
 		end,
 	},
 
+	{ "Mofiqul/vscode.nvim" },
+
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
 		-- change the command in the config to whatever the name of that colorscheme is.
@@ -677,19 +698,30 @@ require("lazy").setup({
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+			-- vim.cmd.colorscheme("vscode")
+			-- vim.cmd("set background=dark")
 			vim.cmd.colorscheme("kanagawa-dragon")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
-			-- vim.cmd.hi("Visual guibg=#131313 guifg=default")
-			-- vim.cmd.hi("Normal guibg=none")
-			vim.cmd.hi("ColorColumn guibg=darkred guifg=darkred")
+			vim.cmd.hi("Visual guibg=yellow guifg=black")
+			vim.cmd.hi("LineNr guifg=#666666 guibg=none")
+			vim.cmd.hi("CursorLineNr guifg=#FF9999 guibg=none gui=bold")
+			vim.cmd.hi("CursorLine guibg=none")
+			vim.cmd.hi("Normal guibg=none")
+			vim.cmd.hi("ColorColumn guibg=#aa3333 guifg=#aa3333")
+			vim.cmd.hi("clear StatusLine")
 			vim.cmd.hi("clear SignColumn")
+			vim.cmd.hi("clear NormalFloat")
+			vim.cmd.hi("clear FloatBorder")
+			vim.cmd.hi("clear FloatTitle")
 			vim.cmd.hi("clear TelescopeBorder")
+			vim.cmd.hi("clear TelescopeNormal")
+			vim.cmd.hi("clear TelescopePromptNormal")
+			vim.cmd.hi("clear TelescopePromptTitle")
 			vim.cmd.hi("GitSignsAdd guibg=none")
 			vim.cmd.hi("GitSignsChange guibg=none")
 			vim.cmd.hi("GitSignsDelete guibg=none")
-			vim.cmd.hi("LineNr guifg=#666666 guibg=none")
 		end,
 	},
 
@@ -726,17 +758,17 @@ require("lazy").setup({
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a Nerd Font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
+			-- local statusline = require("mini.statusline")
+			-- statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
 			-- cursor location to LINE:COLUMN
 			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
+			-- statusline.section_location = function()
+			-- 	return "%2l:%-2v"
+			-- end
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
@@ -806,7 +838,7 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.indent_line',
 	require("kickstart.plugins.lint"),
 	require("kickstart.plugins.autopairs"),
-	require("kickstart.plugins.neo-tree"),
+	-- require("kickstart.plugins.neo-tree"),
 	require("kickstart.plugins.autosession"),
 	require("kickstart.plugins.harpoon"),
 	require("kickstart.plugins.refactoring"),
