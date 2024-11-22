@@ -36,9 +36,12 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.colorcolumn = "80"
 vim.opt.swapfile = false
+vim.opt.shortmess = "atI"
 
 -- mappings
 vim.keymap.set("n", ";", ":")
+vim.keymap.set("n", "<C-h>", ":bp<CR>")
+vim.keymap.set("n", "<C-l>", ":bn<CR>")
 vim.keymap.set("n", "<C-c>", ":bd<CR>")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 vim.keymap.set("n", "<C-u>", "{")
@@ -53,7 +56,6 @@ vim.keymap.set("n", "<M-k>", "2-")
 vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>gs", ":Neogit<CR>")
-vim.keymap.set("n", "<leader>gp", ":Neogit push<CR>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -79,7 +81,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	-- "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
 		"smjonas/inc-rename.nvim",
 		config = function()
@@ -143,13 +145,13 @@ require("lazy").setup({
 
 			-- Document existing key chains
 			spec = {
-				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>r", group = "[R]ename" },
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				-- { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+				-- { "<leader>d", group = "[D]ocument" },
+				-- { "<leader>r", group = "[R]ename" },
+				-- { "<leader>s", group = "[S]earch" },
+				-- { "<leader>w", group = "[W]orkspace" },
+				-- { "<leader>t", group = "[T]oggle" },
+				-- { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			},
 		},
 	},
@@ -204,16 +206,15 @@ require("lazy").setup({
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
-			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+			vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "[S]earch [H]elp" })
+			vim.keymap.set("n", "<leader>k", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+			-- vim.keymap.set("n", "<leader>s", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+			vim.keymap.set("n", "<leader>w", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "<C-g>", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-			vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+			-- vim.keymap.set("n", "<leader>r", builtin.resume, { desc = "[S]earch [R]esume" })
+			-- vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			vim.keymap.set("n", "<C-b>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 			vim.keymap.set("n", "<C-f>", function()
 				builtin.lsp_document_symbols({
 					symbols = { "function", "method" },
@@ -221,7 +222,7 @@ require("lazy").setup({
 			end, { noremap = true, silent = true })
 
 			-- Slightly advanced example of overriding default behavior and theme
-			vim.keymap.set("n", "<space><space>", function()
+			vim.keymap.set("n", "<leader>sb", function()
 				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
@@ -231,7 +232,7 @@ require("lazy").setup({
 
 			-- It's also possible to pass additional configuration options.
 			--  See `:help telescope.builtin.live_grep()` for information about particular keys
-			vim.keymap.set("n", "<leader>s/", function()
+			vim.keymap.set("n", "<leader>sg", function()
 				builtin.live_grep({
 					grep_open_files = true,
 					prompt_title = "Live Grep in Open Files",
@@ -350,7 +351,7 @@ require("lazy").setup({
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
 					-- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-					-- map('<leader>rn', ':IncRe', '[R]e[n]ame')
+					map("<leader>irn", ":IncRename ", "[R]e[n]ame")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
@@ -439,7 +440,7 @@ require("lazy").setup({
 				eslint = {
 					settings = {
 						experimental = {
-							useFlatConfig = true, -- Enable flat config mode
+							useFlatConfig = false, -- Enable flat config mode
 						},
 					},
 					on_attach = function(_, bufnr)
@@ -451,6 +452,7 @@ require("lazy").setup({
 				},
 				ts_ls = {},
 				pylsp = {},
+				html = {},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -699,26 +701,28 @@ require("lazy").setup({
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			-- vim.cmd.colorscheme("vscode")
-			-- vim.cmd("set background=dark")
+			-- vim.cmd("set background=light")
 			vim.cmd.colorscheme("kanagawa-dragon")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
-			vim.cmd.hi("Visual guibg=yellow guifg=black")
+			-- vim.cmd.hi("Visual guibg=darkblue")
 			vim.cmd.hi("LineNr guifg=#666666 guibg=none")
 			vim.cmd.hi("CursorLineNr guifg=#FF9999 guibg=none gui=bold")
 			vim.cmd.hi("CursorLine guibg=none")
-			vim.cmd.hi("Normal guibg=none")
+			-- vim.cmd.hi("Normal guibg=none")
 			vim.cmd.hi("ColorColumn guibg=#aa3333 guifg=#aa3333")
-			vim.cmd.hi("clear StatusLine")
+			vim.cmd.hi("TelescopePromptBorder guibg=none")
+			-- vim.cmd.hi("clear StatusLine")
 			vim.cmd.hi("clear SignColumn")
-			vim.cmd.hi("clear NormalFloat")
-			vim.cmd.hi("clear FloatBorder")
-			vim.cmd.hi("clear FloatTitle")
-			vim.cmd.hi("clear TelescopeBorder")
-			vim.cmd.hi("clear TelescopeNormal")
-			vim.cmd.hi("clear TelescopePromptNormal")
-			vim.cmd.hi("clear TelescopePromptTitle")
+			-- vim.cmd.hi("clear NormalFloat")
+			-- vim.cmd.hi("clear FloatBorder")
+			-- vim.cmd.hi("clear FloatTitle")
+			-- vim.cmd.hi("clear TelescopeBorder")
+			-- vim.cmd.hi("clear TelescopeNormal")
+			-- vim.cmd.hi("clear TelescopePromptNormal")
+			-- vim.cmd.hi("clear TelescopePromptBorder")
+			-- vim.cmd.hi("clear TelescopePromptTitle")
 			vim.cmd.hi("GitSignsAdd guibg=none")
 			vim.cmd.hi("GitSignsChange guibg=none")
 			vim.cmd.hi("GitSignsDelete guibg=none")
@@ -759,8 +763,8 @@ require("lazy").setup({
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
 			-- set use_icons to true if you have a Nerd Font
-			-- local statusline = require("mini.statusline")
-			-- statusline.setup({ use_icons = vim.g.have_nerd_font })
+			local statusline = require("mini.statusline")
+			statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
@@ -805,14 +809,14 @@ require("lazy").setup({
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = true, disable = { "ruby", "html" } },
 			incremental_selection = {
 				enable = true,
 				keymaps = {
-					init_selection = "<M-]>",
-					node_incremental = "<M-]>",
+					init_selection = "<M-/>",
+					node_incremental = "<M-/>",
 					scope_incremental = "<M-\\>",
-					node_decremental = "<M-[>",
+					node_decremental = "<leader>zz",
 				},
 			},
 			fold = { enable = false },
@@ -840,9 +844,10 @@ require("lazy").setup({
 	require("kickstart.plugins.autopairs"),
 	-- require("kickstart.plugins.neo-tree"),
 	require("kickstart.plugins.autosession"),
-	require("kickstart.plugins.harpoon"),
+	-- require("kickstart.plugins.harpoon"),
 	require("kickstart.plugins.refactoring"),
 	require("kickstart.plugins.neogit"),
+	-- require("kickstart.plugins.mark"),
 
 	-- copilot
 	-- {
