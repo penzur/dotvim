@@ -71,10 +71,8 @@ return {
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
         local servers = {
-            -- clangd = {},
-            gopls = {
-                staticcheck = true,
-            },
+            clangd = {},
+            gopls = {},
             -- pyright = {},
             rust_analyzer = {},
             eslint = {
