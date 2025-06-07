@@ -1,8 +1,10 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-        "williamboman/mason-lspconfig.nvim",
+        -- { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+        -- "williamboman/mason-lspconfig.nvim",
+        { "mason-org/mason.nvim", version = "^1.0.0" },
+        { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         { "j-hui/fidget.nvim",       opts = {} },
         "hrsh7th/cmp-nvim-lsp",

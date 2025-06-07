@@ -4,7 +4,7 @@
 -- global
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- options
 vim.opt.laststatus = 2
@@ -16,9 +16,9 @@ vim.opt.fillchars = { fold = " " }
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+--   vim.opt.clipboard = "unnamedplus"
+-- end)
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true
@@ -32,6 +32,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.wrap = false
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -50,10 +51,10 @@ vim.keymap.set("n", "<C-d>", "}")
 vim.keymap.set("n", "<leader>n", ":Oil<CR>")
 vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
 vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
-vim.keymap.set("n", "<C-j>", "2<CR>")
-vim.keymap.set("n", "<C-k>", "2-")
-vim.keymap.set("n", "<M-j>", "2<CR>")
-vim.keymap.set("n", "<M-k>", "2-")
+vim.keymap.set("n", "<C-j>", "2<CR>zz")
+vim.keymap.set("n", "<C-k>", "2-zz")
+vim.keymap.set("n", "<M-j>", "2<CR>zz")
+vim.keymap.set("n", "<M-k>", "2-zz")
 vim.keymap.set("v", "<C-j>", ":move '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-k>", ":move '<-2<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>gs", ":Neogit<CR>")
@@ -113,59 +114,59 @@ require("lazy").setup({
     },
   },
 
-  {
-    "folke/which-key.nvim",
-    event = "VimEnter", -- Sets the loading event to 'VimEnter'
-    opts = {
-      icons = {
-        -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = "<Up> ",
-          Down = "<Down> ",
-          Left = "<Left> ",
-          Right = "<Right> ",
-          C = "<C-…> ",
-          M = "<M-…> ",
-          D = "<D-…> ",
-          S = "<S-…> ",
-          CR = "<CR> ",
-          Esc = "<Esc> ",
-          ScrollWheelDown = "<ScrollWheelDown> ",
-          ScrollWheelUp = "<ScrollWheelUp> ",
-          NL = "<NL> ",
-          BS = "<BS> ",
-          Space = "<Space> ",
-          Tab = "<Tab> ",
-          F1 = "<F1>",
-          F2 = "<F2>",
-          F3 = "<F3>",
-          F4 = "<F4>",
-          F5 = "<F5>",
-          F6 = "<F6>",
-          F7 = "<F7>",
-          F8 = "<F8>",
-          F9 = "<F9>",
-          F10 = "<F10>",
-          F11 = "<F11>",
-          F12 = "<F12>",
-        },
-      },
-
-      -- Document existing key chains
-      spec = {
-        -- { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-        -- { "<leader>d", group = "[D]ocument" },
-        -- { "<leader>r", group = "[R]ename" },
-        -- { "<leader>s", group = "[S]earch" },
-        -- { "<leader>w", group = "[W]orkspace" },
-        -- { "<leader>t", group = "[T]oggle" },
-        -- { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-      },
-    },
-  },
+  -- {
+  --   "folke/which-key.nvim",
+  --   event = "VimEnter", -- Sets the loading event to 'VimEnter'
+  --   opts = {
+  --     icons = {
+  --       -- set icon mappings to true if you have a Nerd Font
+  --       mappings = vim.g.have_nerd_font,
+  --       -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+  --       -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
+  --       keys = vim.g.have_nerd_font and {} or {
+  --         Up = "<Up> ",
+  --         Down = "<Down> ",
+  --         Left = "<Left> ",
+  --         Right = "<Right> ",
+  --         C = "<C-…> ",
+  --         M = "<M-…> ",
+  --         D = "<D-…> ",
+  --         S = "<S-…> ",
+  --         CR = "<CR> ",
+  --         Esc = "<Esc> ",
+  --         ScrollWheelDown = "<ScrollWheelDown> ",
+  --         ScrollWheelUp = "<ScrollWheelUp> ",
+  --         NL = "<NL> ",
+  --         BS = "<BS> ",
+  --         Space = "<Space> ",
+  --         Tab = "<Tab> ",
+  --         F1 = "<F1>",
+  --         F2 = "<F2>",
+  --         F3 = "<F3>",
+  --         F4 = "<F4>",
+  --         F5 = "<F5>",
+  --         F6 = "<F6>",
+  --         F7 = "<F7>",
+  --         F8 = "<F8>",
+  --         F9 = "<F9>",
+  --         F10 = "<F10>",
+  --         F11 = "<F11>",
+  --         F12 = "<F12>",
+  --       },
+  --     },
+  --
+  --     -- Document existing key chains
+  --     spec = {
+  --       -- { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+  --       -- { "<leader>d", group = "[D]ocument" },
+  --       -- { "<leader>r", group = "[R]ename" },
+  --       -- { "<leader>s", group = "[S]earch" },
+  --       -- { "<leader>w", group = "[W]orkspace" },
+  --       -- { "<leader>t", group = "[T]oggle" },
+  --       -- { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+  --     },
+  --   },
+  -- },
 
 
   -- KICKSTART
@@ -173,7 +174,7 @@ require("lazy").setup({
   require("kickstart.plugins.conform"),
   require("kickstart.plugins.mini"),
   require("kickstart.plugins.cmp"),
-  require("kickstart.plugins.lint"),
+  -- require("kickstart.plugins.lint"),
   require("kickstart.plugins.ts"),
   require("kickstart.plugins.autopairs"),
   require("kickstart.plugins.autosession"),
@@ -188,22 +189,18 @@ require("lazy").setup({
   {
     "catppuccin/nvim",
     name = "catppuccin",
-  },
-  { "rebelot/kanagawa.nvim", },
-  {
-    "folke/tokyonight.nvim",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("tokyonight-day")
+      vim.cmd.colorscheme("kanagawa")
 
       -- Basic UI elements
       vim.cmd.hi("Comment gui=none cterm=none")
-      -- vim.cmd.hi("Visual guibg=darkblue cterm=none ctermbg=white ctermfg=black guibg=darkblue")
+      vim.cmd.hi("Visual guibg=darkblue cterm=none ctermbg=white ctermfg=black guibg=darkblue")
       vim.cmd.hi("Visual cterm=none gui=none")
       vim.cmd.hi("LineNr guifg=#666665 guibg=none ctermbg=none")
       vim.cmd.hi("CursorLineNr guifg=#FF9998 guibg=none ctermbg=none gui=bold")
       vim.cmd.hi("CursorLine guibg=none ctermbg=none")
-      -- vim.cmd.hi("Normal guibg=none ctermbg=none")
+      vim.cmd.hi("Normal guibg=none guifg=none ctermbg=none")
       vim.cmd.hi("clear ColorColumn")
       vim.cmd.hi("clear StatusLine")
       vim.cmd.hi("clear SignColumn")
@@ -225,6 +222,10 @@ require("lazy").setup({
       vim.cmd.hi("GitSignsDelete guibg=none ctermbg=none")
     end,
   },
+  { "rebelot/kanagawa.nvim", },
+  {
+    "folke/tokyonight.nvim",
+  },
   -- THEMES
 
   { "Bilal2453/luvit-meta",  lazy = true },
@@ -240,7 +241,6 @@ require("lazy").setup({
   },
   { "mg979/vim-visual-multi" },
   -- { "github/copilot.vim" },
-
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
