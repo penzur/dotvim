@@ -1,4 +1,11 @@
 ---@type LazyPluginSpec
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'cmp_docs',
+    callback = function()
+        vim.treesitter.start(0, 'markdown')
+    end,
+})
+
 return {
     "yetone/avante.nvim",
     event = "VeryLazy",

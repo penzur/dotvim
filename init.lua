@@ -201,14 +201,15 @@ require("lazy").setup({
       vim.cmd.hi("CursorLineNr guifg=#FF9998 guibg=none ctermbg=none gui=bold")
       vim.cmd.hi("CursorLine guibg=none ctermbg=none")
       vim.cmd.hi("Normal guibg=none guifg=none ctermbg=none")
-      vim.cmd.hi("clear ColorColumn")
+      vim.cmd.hi("ColorColumn guibg=#222222")
       vim.cmd.hi("clear StatusLine")
       vim.cmd.hi("clear SignColumn")
 
       -- Telescope specific highlights
       vim.cmd.hi("TelescopePromptBorder guibg=none ctermbg=none")
-      vim.cmd.hi("clear NormalFloat")
-      vim.cmd.hi("clear FloatBorder")
+      -- vim.cmd.hi("clear NormalFloat")
+      -- vim.cmd.hi("clear FloatBorder")
+      vim.cmd.hi("NormalFloat guibg=#222222")
       vim.cmd.hi("clear FloatTitle")
       vim.cmd.hi("clear TelescopeBorder")
       vim.cmd.hi("clear TelescopeNormal")
