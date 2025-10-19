@@ -3,10 +3,10 @@ return {
     dependencies = {
         -- { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
         -- "williamboman/mason-lspconfig.nvim",
-        { "mason-org/mason.nvim", version = "^1.0.0" },
-        { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+        { "mason-org/mason.nvim" },
+        { "mason-org/mason-lspconfig.nvim" },
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        { "j-hui/fidget.nvim",       opts = {} },
+        { "j-hui/fidget.nvim", opts = {} },
         "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
@@ -75,24 +75,21 @@ return {
         local servers = {
             clangd = {},
             gopls = {},
-            -- pyright = {},
             rust_analyzer = {},
-            eslint = {
-                settings = {
-                    experimental = {
-                        useFlatConfig = false, -- Enable flat config mode
-                    },
-                },
-                on_attach = function(_, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        command = "EslintFixAll",
-                    })
-                end,
-            },
-            ts_ls = {},
-            pylsp = {},
-            html = {},
+            -- eslint = {
+            --     settings = {
+            --         experimental = {
+            --             useFlatConfig = false, -- Enable flat config mode
+            --         },
+            --     },
+            --     on_attach = function(_, bufnr)
+            --         vim.api.nvim_create_autocmd("BufWritePre", {
+            --             buffer = bufnr,
+            --             command = "EslintFixAll",
+            --         })
+            --     end,
+            -- },
+            vtsls = {},
 
             lua_ls = {
                 -- cmd = {...},

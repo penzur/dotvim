@@ -25,6 +25,7 @@ return {
     config = function()
         require("telescope").setup({
             defaults = {
+                file_ignore_patterns = { "node_modules" },
                 mappings = {
                     i = {
                         ["<escape>"] = require("telescope.actions").close,
@@ -33,7 +34,6 @@ return {
                     },
                 },
             },
-            -- pickers = {}
             extensions = {
                 ["ui-select"] = {
                     require("telescope.themes").get_dropdown(),

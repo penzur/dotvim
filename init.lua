@@ -4,7 +4,7 @@
 -- global
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- options
 vim.opt.laststatus = 2
@@ -33,6 +33,7 @@ vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
+vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
@@ -191,36 +192,38 @@ require("lazy").setup({
     name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("kanagawa")
+      vim.cmd.colorscheme("kanagawa-dragon")
 
       -- Basic UI elements
-      vim.cmd.hi("Comment gui=none cterm=none")
-      vim.cmd.hi("Visual guibg=darkblue cterm=none ctermbg=white ctermfg=black guibg=darkblue")
+      -- vim.cmd.hi("Comment gui=none cterm=none")
+      -- vim.cmd.hi("Visual guibg=darkblue cterm=none ctermbg=white ctermfg=black guibg=yellow")
+      -- vim.cmd.hi("Visual guibg=darkblue cterm=none ctermbg=white ctermfg=black guibg=darkblue")
       vim.cmd.hi("Visual cterm=none gui=none")
       vim.cmd.hi("LineNr guifg=#666665 guibg=none ctermbg=none")
       vim.cmd.hi("CursorLineNr guifg=#FF9998 guibg=none ctermbg=none gui=bold")
       vim.cmd.hi("CursorLine guibg=none ctermbg=none")
-      vim.cmd.hi("Normal guibg=none guifg=none ctermbg=none")
-      vim.cmd.hi("ColorColumn guibg=#222222")
+      -- vim.cmd.hi("Cursor guibg=darkblue ctermbg=none")
+      -- vim.cmd.hi("Normal guibg=none guifg=none ctermbg=none")
+      -- vim.cmd.hi("ColorColumn guibg=#222222")
       vim.cmd.hi("clear StatusLine")
       vim.cmd.hi("clear SignColumn")
 
       -- Telescope specific highlights
-      vim.cmd.hi("TelescopePromptBorder guibg=none ctermbg=none")
+      -- vim.cmd.hi("TelescopePromptBorder guibg=none ctermbg=none")
       -- vim.cmd.hi("clear NormalFloat")
       -- vim.cmd.hi("clear FloatBorder")
-      vim.cmd.hi("NormalFloat guibg=#222222")
-      vim.cmd.hi("clear FloatTitle")
-      vim.cmd.hi("clear TelescopeBorder")
-      vim.cmd.hi("clear TelescopeNormal")
-      vim.cmd.hi("clear TelescopePromptNormal")
-      vim.cmd.hi("clear TelescopePromptBorder")
-      vim.cmd.hi("clear TelescopePromptTitle")
-
+      -- vim.cmd.hi("NormalFloat guibg=#222222")
+      -- vim.cmd.hi("clear FloatTitle")
+      -- vim.cmd.hi("clear TelescopeBorder")
+      -- vim.cmd.hi("clear TelescopeNormal")
+      -- vim.cmd.hi("clear TelescopePromptNormal")
+      -- vim.cmd.hi("clear TelescopePromptBorder")
+      -- vim.cmd.hi("clear TelescopePromptTitle")
+      --
       -- Git signs highlights
-      vim.cmd.hi("GitSignsAdd guibg=none ctermbg=none")
-      vim.cmd.hi("GitSignsChange guibg=none ctermbg=none")
-      vim.cmd.hi("GitSignsDelete guibg=none ctermbg=none")
+      --   vim.cmd.hi("GitSignsAdd guibg=none ctermbg=none")
+      --   vim.cmd.hi("GitSignsChange guibg=none ctermbg=none")
+      --   vim.cmd.hi("GitSignsDelete guibg=none ctermbg=none")
     end,
   },
   { "rebelot/kanagawa.nvim", },
@@ -241,7 +244,7 @@ require("lazy").setup({
     },
   },
   { "mg979/vim-visual-multi" },
-  { "github/copilot.vim" },
+  -- { "github/copilot.vim" },
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
