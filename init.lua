@@ -33,7 +33,12 @@ vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+-- vim.opt.guicursor = "n-v-i-c:block-Cursor"
+vim.opt.guicursor = {
+  'n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+  'i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+  'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
+}
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
