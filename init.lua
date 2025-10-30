@@ -182,6 +182,7 @@ require("lazy").setup({
   require("kickstart.plugins.cmp"),
   -- require("kickstart.plugins.lint"),
   require("kickstart.plugins.ts"),
+  require("kickstart.plugins.indent_line"),
   require("kickstart.plugins.autopairs"),
   require("kickstart.plugins.autosession"),
   require("kickstart.plugins.refactoring"),
@@ -208,7 +209,7 @@ require("lazy").setup({
       vim.cmd.hi("CursorLineNr guifg=#FF9998 guibg=none ctermbg=none gui=bold")
       vim.cmd.hi("CursorLine guibg=none ctermbg=none")
       -- vim.cmd.hi("Cursor guibg=darkblue ctermbg=none")
-      -- vim.cmd.hi("Normal guibg=none guifg=none ctermbg=none")
+      vim.cmd.hi("Normal guibg=none guifg=none ctermbg=none")
       -- vim.cmd.hi("ColorColumn guibg=#222222")
       vim.cmd.hi("clear StatusLine")
       vim.cmd.hi("clear SignColumn")
@@ -300,6 +301,20 @@ require("lazy").setup({
     },
   },
 })
+
+-- Define diagnostic icons
+local signs = {
+  Error = "", -- nf-fa-times_circle / or 
+  Warn  = "", -- nf-fa-exclamation_triangle / or 
+  Hint  = "", -- nf-fa-lightbulb_o / or 
+  Info  = "", -- nf-fa-info_circle / or 
+}
+
+-- Apply the icons
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
