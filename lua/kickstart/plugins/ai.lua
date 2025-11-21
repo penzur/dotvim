@@ -31,7 +31,7 @@ return {
 			-- GitHub Copilot Configuration
 			copilot = {
 				endpoint = "https://api.githubcopilot.com",
-				model = "claude-3.5-sonnet",
+				model = "claude-haiku-4.5",
 				proxy = nil, -- Optional proxy configuration
 				allow_insecure = false, -- Security setting
 				timeout = 30000, -- Request timeout

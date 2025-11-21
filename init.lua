@@ -34,12 +34,12 @@ vim.opt.inccommand = "split"
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
 -- vim.opt.guicursor = "n-v-i-c:block-Cursor"
-vim.opt.guicursor = {
-  'n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
-}
-
+-- vim.opt.guicursor = {
+--   'n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+--   'i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+--   'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
+-- }
+--
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.colorcolumn = "80"
@@ -182,7 +182,7 @@ require("lazy").setup({
   require("kickstart.plugins.cmp"),
   -- require("kickstart.plugins.lint"),
   require("kickstart.plugins.ts"),
-  require("kickstart.plugins.indent_line"),
+  -- require("kickstart.plugins.indent_line"),
   require("kickstart.plugins.autopairs"),
   require("kickstart.plugins.autosession"),
   require("kickstart.plugins.refactoring"),
