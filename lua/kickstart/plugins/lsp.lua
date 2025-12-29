@@ -46,11 +46,7 @@ return {
 
                 -- Fuzzy find all the symbols in your current workspace.
                 --  Similar to document symbols, except searches over your entire project.
-                map(
-                    "<leader>ws",
-                    require("telescope.builtin").lsp_dynamic_workspace_symbols,
-                    "[W]orkspace [S]ymbols"
-                )
+                map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
                 map("<leader>rn", ":IncRename ", "[R]e[n]ame")
 
@@ -75,7 +71,18 @@ return {
         local servers = {
             clangd = {},
             gopls = {},
-            rust_analyzer = {},
+            rust_analyzer = {
+                settings = {
+                    ["rust-analyzer"] = {
+                        check = {
+                            allTargets = false,
+                        },
+                        cargo = {
+                            allTargets = false,
+                        },
+                    },
+                },
+            },
             -- eslint = {
             --     settings = {
             --         experimental = {
